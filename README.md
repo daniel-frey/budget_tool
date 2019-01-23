@@ -13,3 +13,4 @@ Python, Docker, Django
 ## TODO
 1. Add user ability to create transactions.
 1. Add user ability to remove transactions.
+1. Fix up any testing errors.
