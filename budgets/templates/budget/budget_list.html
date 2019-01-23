@@ -1,0 +1,19 @@
+{% extends "generic/base.html" %}
+
+{% block content %}
+<div class="budget_list">
+{% for budget in budgets %}
+<div class="status_{{ transaction }}">
+  <p>{{ budget.name }}: ${{ budget.total_budget|floatformat:2}}</p>
+  <p>Your Money left: ${{budget.remaining_budget|floatformat:2}}</p>
+  {% for transaction in transactions %}
+    {% if transaction.type == 'WITHDRAWAL' %}
+    <p class="transaction"><a href="{% url "transaction_detail" id=transaction.id %}">{{ transaction.description }}: -{{transaction.amount|floatformat:2}}</a></p>
+    {% else %}
+    <p class="transaction"><a href="{% url "transaction_detail" id=transaction.id %}">{{ transaction.description }}: +{{transaction.amount|floatformat:2}}</a></p>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endfor %}
+</div>
+{% endblock content %}

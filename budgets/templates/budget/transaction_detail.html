@@ -1,0 +1,10 @@
+{% extends "generic/base.html" %}
+
+{% block content %}
+<p>{{ transaction.description }}</p>
+{% if transaction.type == 'WITHDRAWAL' %}
+<p class="transaction">-{{ transaction.amount|floatformat:2 }}</p>
+{% else %}
+<p class="transaction">+{{transaction.amount|floatformat:2 }}</p>
+{% endif %}
+{% endblock content %}

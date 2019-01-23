@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  transition: color 0.5s ease;
+  color: #fff;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+header {
+  background-color: #1fbcff;
+  color: #fff;
+  padding: 10px 15px;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
+h4 a {
+  font-size: 16px;
+}
+
+h6 {
+  margin-bottom: 5px;
+}
+
+h6 a {
+  color: #fff;
+}
+
+li a {
+  text-decoration: none;
+  color: #3a53e9;
+}
+
+main {
+  padding: 20px;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav li:after {
+  content: ' ';
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+}
+
+.transaction {
+  padding-left: 40px;
+}
+
+.transaction a {
+  text-decoration: none;
+  color: #3a53e9;
+}
+
+.welcome a {
+  text-decoration: none;
+}
