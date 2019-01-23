@@ -1,6 +1,7 @@
 {% extends "generic/base.html" %}
 
 {% block content %}
+<a href="{% url "add_transaction" %}">Add New Transaction</a>
 <p>{{ transaction.description }}</p>
 {% if transaction.type == 'WITHDRAWAL' %}
 <p class="transaction">-{{ transaction.amount|floatformat:2 }}</p>
