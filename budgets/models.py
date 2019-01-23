@@ -5,16 +5,19 @@ from django.contrib.auth.models import User
 
 
 class Budget(models.Model):
-    """Model with a name, total/remaining budgets, and a user as a foreign key."""
+    """Budget model has a user as the foreign key, the budget, and a name."""
 
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='budgets')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='budgets')
 
     name = models.CharField(max_length=180, default='none')
     total_budget = models.FloatField(default='0.0')
     remaining_budget = models.FloatField(default='0.0')
+
+    def save(self, *args, **kwargs):
+        """Make sure that the budget balances."""
+        if not self.remaining_budget:
+            self.remaining_budget = self.total_budget
+        super().save(*args, **kwargs)
 
     def __repr__(self):
         return '<Budget: {}>'.format(self.name)

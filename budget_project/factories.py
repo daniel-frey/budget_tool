@@ -1,11 +1,10 @@
-"""Uses factory-boy package to create testing fixtures."""
 import factory
 from django.contrib.auth.models import User
 from budgets.models import Budget, Transaction
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    """Creates a user for testing."""
+    """Create user for test purposes"""
 
     class Meta:
         """Meta class for user."""
@@ -19,7 +18,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
 
 class BudgetFactory(factory.django.DjangoModelFactory):
-    """Creates a Budget instance for testing."""
+    """Create budget instance for test purposes"""
 
     class Meta:
         """Meta class for Budget."""
@@ -32,7 +31,7 @@ class BudgetFactory(factory.django.DjangoModelFactory):
 
 
 class TransactionFactory(factory.django.DjangoModelFactory):
-    """Creates a Transaction instance for testing."""
+    """Create transaction instance for test purposes"""
 
     class Meta:
         """Meta class for Transaction."""
@@ -41,5 +40,5 @@ class TransactionFactory(factory.django.DjangoModelFactory):
 
     assigned_user = factory.SubFactory(UserFactory)
     budget = factory.SubFactory(BudgetFactory)
-    amount = '100.0'
+    amount = '200.0'
     description = factory.Faker('paragraph')
