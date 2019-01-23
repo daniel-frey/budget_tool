@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="budget_list">
+<a href={% url "add_budget"  %}>Add a new item</a>
 {% for budget in budgets %}
 <div class="status_{{ transaction }}">
   <p>{{ budget.name }}: ${{ budget.total_budget|floatformat:2}}</p>

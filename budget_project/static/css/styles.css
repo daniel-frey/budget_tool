@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
 
 a {
-  color: #fff;
+  color: #1fbcff;
   text-decoration: none;
 }
 
 a:hover {
   transition: color 0.5s ease;
-  color: #fff;
+  color: #ff473b;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
 }
 
 header {
-  background-color: #1fbcff;
+  background-color: #696969;
   color: #fff;
   padding: 10px 15px;
 }
@@ -38,7 +38,7 @@ h6 a {
 
 li a {
   text-decoration: none;
-  color: #3a53e9;
+  color: #1fbcff;
 }
 
 main {
@@ -67,7 +67,7 @@ ul {
 
 .transaction a {
   text-decoration: none;
-  color: #3a53e9;
+  color: #1fbcff;
 }
 
 .welcome a {
