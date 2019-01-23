@@ -1,4 +1,3 @@
-"""Models for use in the budget app."""
 from django.db import models
 from django.dispatch import receiver
 from django.contrib.auth.models import User
@@ -11,7 +10,7 @@ class Budget(models.Model):
 
     name = models.CharField(max_length=180, default='none')
     total_budget = models.FloatField(default='0.0')
-    remaining_budget = models.FloatField(default='0.0')
+    remaining_budget = models.FloatField()
 
     def save(self, *args, **kwargs):
         """Make sure that the budget balances."""
@@ -29,7 +28,6 @@ class Budget(models.Model):
 class Transaction(models.Model):
     """Transaction model"""
     assigned_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transactions', null=True, blank=True)
-
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE, related_name='transactions')
 
     STATES = (

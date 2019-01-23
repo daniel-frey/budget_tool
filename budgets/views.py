@@ -1,8 +1,8 @@
-"""Views from within the app."""
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 from .models import Budget, Transaction
+from .forms import BudgetForm, TransactionForm
 
 
 class BudgetView(LoginRequiredMixin, ListView):
@@ -35,3 +35,31 @@ class TransactionView(LoginRequiredMixin, DetailView):
         """Query the transactions associated with the user."""
         return Transaction.objects.filter(
             budget__user__username=self.request.user.username)
+
+
+class BudgetCreateView(LoginRequiredMixin, CreateView):
+    """Create a new budget item form."""
+    template_name = 'budget/create_budget.html'
+    model = Budget
+    form_class = BudgetForm
+    success_url = reverse_lazy('budget_list')
+    login_url = reverse_lazy('auth_login')
+
+    def form_valid(self, form):
+        """Validate form data."""
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class TransactionCreateView(LoginRequiredMixin, CreateView):
+    """Create a new transaction item form."""
+    template_name = 'budget/create_transaction.html'
+    model = Transaction
+    form_class = TransactionForm
+    success_url = reverse_lazy('budget_list')
+    login_url = reverse_lazy('auth_login')
+
+    def form_valid(self, form):
+        """Validate form data."""
+        form.instance.user = self.request.user
+        return super().form_valid(form)
