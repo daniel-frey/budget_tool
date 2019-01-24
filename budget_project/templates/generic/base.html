@@ -18,14 +18,17 @@
       <p class="'welcome">Welcome, {{ user.username }}! (<a href="{% url "logout" %}">logout</a>)</p>
       {% endif %}
       <ul>
-        <li><a href="{% url "home" %}">Home</a></li>
+        <li><a href="{% url "home" %}">Home |</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url "budget_list" %}">Your Budgets</a></li>
+        <li><a href="{% url "budget_list" %}"> Your Budgets |</a></li>
+        <li><a href="{% url "user-detail" pk=user.id %}">User Details</a></li>
+        <li><a href={% url "add_budget"  %}> Add a new item |</a></li>
+        <li><a href="{% url "add_transaction" %}"> Add New Transaction |</a></li>
         {% if user.is_superuser %}
         <li><a href="{% url "admin:index" %}">Admin</a></li>
         {% endif %}
         {% else %}
-        <li><a href="{% url "django_registration_register" %}">Register</a></li>
+        <li><a href="{% url "register" %}">Register</a></li>
         <li><a href="{% url "login" %}">Sign In</a></li>
         {% endif %}
       </ul>
