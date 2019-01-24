@@ -15,6 +15,8 @@ django-registration = "*"
 psycopg2-binary = "*"
 factory-boy = "*"
 coverage = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.6"

@@ -25,6 +25,7 @@ urlpatterns = [
     path('accounts/', include('django_registration.backends.activation.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('budgets/', include('budgets.urls')),
+    path('api/v1/', include('budget_api.urls')),
 ]
 
 if settings.DEBUG:
