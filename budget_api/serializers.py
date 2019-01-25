@@ -1,6 +1,5 @@
-"""Define serializers for use with budget auth API."""
-
 from django.contrib.auth.models import User
+from budgets.models import Budget, Transaction
 from rest_framework import serializers
 
 
@@ -30,3 +29,24 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+
+class BudgetSerializer(serializers.HyperlinkedModelSerializer):
+    """Create the serializer for budgets and such."""
+    owner = serializers.ReadOnlyField(source='user.username')
+    user = serializers.HyperlinkedRelatedField(view_name='user_detail', read_only=True)
+
+    class Meta:
+        """Meta class for budget serializer"""
+        model = Budget
+        fields = ('id', 'user', 'owner', 'name', 'total_budget', 'remaining_budget')
+
+
+class TransactionSerializer(serializers.HyperlinkedModelSerializer):
+    """Create the serializer for transactions"""
+    budget = serializers.HyperlinkedRelatedField(view_name='budget-detail-api', read_only=True)
+
+    class Meta:
+        """Meta class for transaction serializer"""
+        model = Transaction
+        fields = ('id', 'assigned_user', 'budget', 'type', 'amount' 'description')
